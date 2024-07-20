@@ -26,6 +26,26 @@ const EmployeeForm = ({ selectedEmployee, fetchEmployees }) => {
       [e.target.name]: e.target.value
     });
   };
+import React from 'react';
+
+const EmployeeList = ({ employees, selectEmployee, deleteEmployee }) => {
+  return (
+    <div>
+      <h2>Employee List</h2>
+      <ul>
+        {employees.map(employee => (
+          <li key={employee.id}>
+            {employee.name} - {employee.position} - {employee.department} - ${employee.salary}
+            <button onClick={() => selectEmployee(employee)}>Edit</button>
+            <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default EmployeeList;
 
   const handleSubmit = e => {
     e.preventDefault();
